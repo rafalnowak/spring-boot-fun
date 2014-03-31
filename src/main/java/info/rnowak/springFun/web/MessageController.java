@@ -20,15 +20,21 @@ public class MessageController {
         this.messageRepository = messageRepository;
     }
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/list/{page}", method = RequestMethod.GET)
     @ResponseBody
-    public List<Message> list() {
-        return messageRepository.findAll(new PageRequest(0, DEFAULT_PAGE_SIZE)).getContent();
+    public List<Message> list(@PathVariable int page) {
+        return messageRepository.findAll(new PageRequest(page, DEFAULT_PAGE_SIZE)).getContent();
     }
 
     @RequestMapping(value = "/find/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Message find(@PathVariable Long id) {
-        return messageRepository.findById(id);
+        return messageRepository.findOne(id);
+    }
+
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @ResponseBody
+    public Message create(@RequestBody Message message) {
+        return messageRepository.save(message);
     }
 }

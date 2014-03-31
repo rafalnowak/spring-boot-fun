@@ -29,15 +29,16 @@ public class MessageRepositoryIntegrationTest {
     @Test
     public void shouldFindMessageWithId() {
         //when:
-        Message message = messageRepository.findById(0L);
+        Message message = messageRepository.findOne(0L);
         //then:
+        assertThat(message).isNotNull();
         assertThat(message.getHeader()).isNotNull().isEqualTo("Header1");
     }
 
     @Test
     public void shouldReturnNullWhenMessageWithIdDoesNotExist() {
         //when:
-        Message message = messageRepository.findById(999L);
+        Message message = messageRepository.findOne(999L);
         //then:
         assertThat(message).isNull();
     }
