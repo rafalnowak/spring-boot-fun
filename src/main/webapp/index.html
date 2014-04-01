@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html ng-app="springFun">
+
+<head>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.4/angular.min.js"></script>
+    <script src="messages.js"></script>
+</head>
+
+<body ng-controller="mainController">
+
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Spring Boot Fun</a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="main" class="container">
+        <div class="row" ng-if="errorMessage != null">
+            <div class="alert alert-danger">{{errorMessage}}</div>
+        </div>
+
+        <div class="row">
+            <table class="table table-hover table-striped table-condensed col-12">
+                <thead>
+                    <th>Header</th>
+                    <th>Body</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="message in messages">
+                        <td>{{message.header}}</td>
+                        <td>{{message.body}}<td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer class="text-center">
+        Spring Boot Fun
+    </footer>
+
+</body>
+
+</html>
