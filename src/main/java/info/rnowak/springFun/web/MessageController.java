@@ -1,13 +1,16 @@
 package info.rnowak.springFun.web;
 
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import info.rnowak.springFun.domain.Message;
 import info.rnowak.springFun.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/message")
@@ -22,8 +25,8 @@ public class MessageController {
     }
 
     @RequestMapping(value = "/list/{page}", method = RequestMethod.GET)
-    public List<Message> list(@PathVariable int page) {
-        return messageRepository.findAll(new PageRequest(page, DEFAULT_PAGE_SIZE)).getContent();
+    public Page<Message> list(@PathVariable int page) {
+        return messageRepository.findAll(new PageRequest(page, DEFAULT_PAGE_SIZE));
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
@@ -37,7 +40,10 @@ public class MessageController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public Message create(@RequestBody Message message) {
-        return messageRepository.save(message);
+    public Map<String, Object> create(@RequestBody Message message) {
+        Message newMessage = messageRepository.save(message);
+        return new ImmutableMap.Builder<String, Object>().
+                put("created", newMessage != null).
+                put("newMessage", newMessage).build();
     }
 }

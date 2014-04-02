@@ -1,6 +1,24 @@
 <div class="container">
-    <div class="row" ng-if="errorMessage != null">
-        <div class="alert alert-danger">{{errorMessage}}</div>
+
+    <div ng-controller="NewMessageController">
+        <div class="row" ng-if="errorMessage != null">
+            <div class="alert alert-danger">{{errorMessage}}</div>
+        </div>
+
+        <div class="well">
+            <form role="form">
+                <div class="form-group">
+                    <label for="header">Header</label>
+                    <input type="text" class="form-control" id="header" placeholder="Message header" required ng-model="message.header">
+                </div>
+                <div class="form-group">
+                    <label for="body">Body</label>
+                    <textarea class="form-control" id="body" placeholder="Message body"
+                              rows="3" style="resize: none" required ng-model="message.body"></textarea>
+                </div>
+                <a class="btn btn-default" ng-click="sendMessage()">Send message</a>
+            </form>
+        </div>
     </div>
 
     <div class="row">
