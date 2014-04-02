@@ -1,12 +1,18 @@
-var springFun = angular.module('springFun', []);
+var springFun = angular.module('springFun', ['ngRoute', 'springFunControllers']);
 
-springFun.controller('mainController', function($scope, $http) {
-    $scope.messages = [];
-    var futureResponse = $http.get('/message/list/0');
-    futureResponse.success(function (data, status, headers, config) {
-        $scope.messages = data;
-    });
-    futureResponse.error(function (data, status, headers, config) {
-        $scope.errorMessage = "Error occured while connecting to application!";
-    });
-});
+springFun.config(['$routeProvider', function($routeProvider) {
+    $routeProvider.
+        when("/list", {
+            templateUrl: 'templates/list.html',
+            controller: 'MessagesController'
+        }).
+        when('/index', {
+            templateUrl: 'templates/hello.html'
+        }).
+        when('/about', {
+            templateUrl: 'templates/about.html'
+        }).
+        otherwise({
+            redirectTo: '/index'
+        });
+}]);

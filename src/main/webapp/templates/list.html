@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row" ng-if="errorMessage != null">
+        <div class="alert alert-danger">{{errorMessage}}</div>
+    </div>
+
+    <div class="row">
+        <table class="table table-hover table-striped table-condensed col-12">
+            <thead>
+            <th>Header</th>
+            <th>Body</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="message in messages">
+                <td>{{message.header}}</td>
+                <td>{{message.body}}<td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
