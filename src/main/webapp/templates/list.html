@@ -1,6 +1,6 @@
 <div class="container">
 
-    <div ng-controller="NewMessageController">
+    <div class="row col-md-12" ng-controller="NewMessageController">
         <div class="row" ng-if="errorMessage != null">
             <div class="alert alert-danger">{{errorMessage}}</div>
         </div>
@@ -21,17 +21,23 @@
         </div>
     </div>
 
-    <div class="row">
-        <table class="table table-hover table-striped table-condensed col-12">
+    <div class="row col-md-12">
+        <table class="table table-hover table-striped table-condensed">
             <thead>
-            <th>Header</th>
-            <th>Body</th>
+                <th>Id</th>
+                <th>Header</th>
+                <th>Body</th>
+                <th></th>
             </thead>
-            <tbody>
-            <tr ng-repeat="message in messages">
-                <td>{{message.header}}</td>
-                <td>{{message.body}}<td>
-            </tr>
+            <tbody ng-controller="DeleteMessageController">
+                <tr ng-repeat="message in messages">
+                    <td>{{message.id}}</td>
+                    <td>{{message.header}}</td>
+                    <td>{{message.body}}<td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-xs" ng-click="deleteMessage(message.id)">Delete <span class="glyphicon glyphicon-remove"></span></button>
+                    <td>
+                </tr>
             </tbody>
         </table>
     </div>

@@ -46,4 +46,9 @@ public class MessageController {
                 put("created", newMessage != null).
                 put("newMessage", newMessage).build();
     }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable Long id) {
+        messageRepository.delete(id);
+    }
 }

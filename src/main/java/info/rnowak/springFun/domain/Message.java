@@ -27,6 +27,10 @@ public class Message implements Serializable {
         this.body = body;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public String getHeader() {
         return this.header;
     }
