@@ -7,9 +7,18 @@ springFunControllers.controller('MessagesController', function($scope, $http) {
     }).error(function (data, status, headers, config) {
         $scope.errorMessage = "Can't retrieve messages list!";
     });
-});
 
-springFunControllers.controller('NewMessageController', function($scope, $http) {
+    $scope.deleteMessage = function(id) {
+        $http.delete('/message/delete/' + id).success(function (data, status, headers, config) {
+            $scope.messages = $scope.messages.filter(function(message) {
+                    return message.id != id;
+                }
+            );
+        }).error(function (data, status, headers, config) {
+            $scope.errorMessage = "Can't delete message!";
+        });
+    };
+
     $scope.sendMessage = function() {
         var message = $scope.message;
         var params = JSON.stringify(message);
@@ -27,19 +36,6 @@ springFunControllers.controller('NewMessageController', function($scope, $http) 
             }
         }).error(function (data, status, headers, config) {
             $scope.errorMessage = "Sending message failed!"
-        });
-    };
-});
-
-springFunControllers.controller('DeleteMessageController', function($scope, $http) {
-    $scope.deleteMessage = function(id) {
-        $http.delete('/message/delete/' + id).success(function (data, status, headers, config) {
-            $scope.messages = $scope.messages.filter(function(message) {
-                    return message.id != id;
-                }
-            );
-        }).error(function (data, status, headers, config) {
-            $scope.errorMessage = "Can't delete message!";
         });
     };
 });
