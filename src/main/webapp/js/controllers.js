@@ -2,6 +2,7 @@ var springFunControllers = angular.module('springFunControllers', []);
 
 springFunControllers.controller('MessagesController', function($scope, $http) {
     $scope.messages = [];
+
     $http.get('/message/all').success(function (data, status, headers, config) {
         $scope.messages = data;
     }).error(function (data, status, headers, config) {

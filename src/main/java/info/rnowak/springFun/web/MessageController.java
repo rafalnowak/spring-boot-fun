@@ -15,7 +15,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/message")
 public class MessageController {
-    private static final int DEFAULT_PAGE_SIZE = 10;
+    private static final int DEFAULT_PAGE_SIZE = 5;
 
     private MessageRepository messageRepository;
 

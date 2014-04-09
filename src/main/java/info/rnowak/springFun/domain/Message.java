@@ -32,10 +32,10 @@ public class Message implements Serializable {
     }
 
     public String getHeader() {
-        return this.header;
+        return header;
     }
 
     public String getBody() {
-        return this.body;
+        return body;
     }
 }
