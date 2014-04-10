@@ -1,4 +1,4 @@
-package info.rnowak.springFun.web;
+package info.rnowak.springFun.controller;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
