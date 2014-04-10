@@ -1,4 +1,4 @@
-package info.rnowak.springFun.web;
+package info.rnowak.springFun.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
