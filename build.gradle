@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.0.1.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.6.RELEASE")
     }
 }
 
@@ -20,7 +20,7 @@ allprojects {
     }
 
     dependencies {
-        compile "org.springframework.boot:spring-boot-starter-test:1.0.1.RELEASE"
+        compile "org.springframework.boot:spring-boot-starter-test:1.1.6.RELEASE"
         compile "com.google.guava:guava:16.0.1"
         compile "com.h2database:h2:1.3.175"
 
@@ -32,7 +32,7 @@ allprojects {
 
 project(":persistence") {
     dependencies {
-        compile "org.springframework.boot:spring-boot-starter-data-jpa:1.0.1.RELEASE"
+        compile "org.springframework.boot:spring-boot-starter-data-jpa:1.1.6.RELEASE"
 
         testCompile project(":webapp")
     }
@@ -43,6 +43,6 @@ project(":webapp") {
 
     dependencies {
         compile project(":persistence")
-        compile "org.springframework.boot:spring-boot-starter-web:1.0.1.RELEASE"
+        compile "org.springframework.boot:spring-boot-starter-web:1.1.6.RELEASE"
     }
 }
